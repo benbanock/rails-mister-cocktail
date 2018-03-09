@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: cocktails_path
   resources :cocktails, only: [:index, :show, :new, :create] do
     resources :doses, only:[:create, :new, :destroy]
   end
