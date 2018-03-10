@@ -5,13 +5,14 @@
     <%= link_to "Delete", cocktail_dose_path(@cocktail, dose), method: :delete %>
   </li>
   <% end %>
+  <% if  @cocktail.photo.present? %>
+
+  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  <% end %>
+
 </ul>
+<%= link_to "Delete", cocktail_path(@cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" }, class: "btn btn-primary"%>
 
- <%= simple_form_for [@cocktail, @dose] do |f| %>
-   <%= f.input :description %>
-   <%= f.association :ingredient %>
-   <%= f.submit "add a description", class: "btn btn-primary" %>
-
- <% end %>
-
-
+<%= link_to "go back home", cocktails_path, class: "btn btn-primary" %>
